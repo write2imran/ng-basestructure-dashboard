@@ -1,6 +1,8 @@
-# Temp2
+# Baltit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+
+Use this basic structure to start with any domain specific applicatino, as it has all dashbaord and menu support. It uses angular version of admin-lte 2.x
 
 ## Development server
 
