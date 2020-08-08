@@ -1,0 +1,130 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "baltit": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/baltit",
+      "sourceRoot": "projects/baltit/src",
+      "prefix": "sih",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/baltit",
+            "index": "projects/baltit/src/index.html",
+            "main": "projects/baltit/src/main.ts",
+            "polyfills": "projects/baltit/src/polyfills.ts",
+            "tsConfig": "projects/baltit/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/baltit/src/favicon.ico",
+              "projects/baltit/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap-css-only/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/ionicons/dist/css/ionicons.css",
+              "node_modules/admin-lte-css/dist/css/AdminLTE.css",
+              "node_modules/admin-lte-css/dist/css/skins/_all-skins.css",
+              "projects/baltit/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/baltit/src/environments/environment.ts",
+                  "with": "projects/baltit/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "baltit:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "baltit:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "baltit:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/baltit/src/test.ts",
+            "polyfills": "projects/baltit/src/polyfills.ts",
+            "tsConfig": "projects/baltit/tsconfig.spec.json",
+            "karmaConfig": "projects/baltit/karma.conf.js",
+            "assets": [
+              "projects/baltit/src/favicon.ico",
+              "projects/baltit/src/assets"
+            ],
+            "styles": [
+              "projects/baltit/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/baltit/tsconfig.app.json",
+              "projects/baltit/tsconfig.spec.json",
+              "projects/baltit/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/baltit/e2e/protractor.conf.js",
+            "devServerTarget": "baltit:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "baltit:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "baltit"
+}
